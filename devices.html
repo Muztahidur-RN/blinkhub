@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BlinkHub-Devicess – Computers, Phones & Electronics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+</head>
+<body data-page="devices">
+  <header class="nav">
+    <div class="nav-left">
+      <img src="assets/logo-bh-icon.png" alt="BlinkHubMall Logo" class="logo-icon" />
+      <div class="logo-text-group">
+        <span class="brand-main">BlinkHub-Devicess</span>
+        <span class="tagline">Tech, gadgets & devices for your digital life.</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">BlinkHubMall</a>
+      <a href="devices.html" class="active">Store</a>
+    </nav>
+    <div class="nav-auth">
+      <span id="userStatus"></span>
+      <button id="loginBtn" class="btn ghost">Login</button>
+      <button id="logoutBtn" class="btn danger hidden">Logout</button>
+    </div>
+  </header>
+
+  <section class="hero hero-small">
+    <div class="hero-text">
+      <h1>BlinkHub-Devicess Store</h1>
+      <p>
+        Browse all devices without an account.  
+        <strong>To buy or add to cart, you must login or create an account.</strong>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Featured Devices</h2>
+    <p class="section-subtitle">Computers, phones and electronics from BlinkHub-Devicess.</p>
+
+    <div class="cards-grid products-grid">
+      <!-- Example product cards (you can duplicate/change) -->
+      <article class="card product-card">
+        <h3>UltraBlink Laptop 15”</h3>
+        <p class="product-meta">Intel i7 · 16GB RAM · 512GB SSD</p>
+        <p class="product-price">$999</p>
+        <button class="btn primary require-auth">Add to Cart</button>
+        <p class="auth-hint"></p>
+      </article>
+
+      <article class="card product-card">
+        <h3>BlinkPhone Pro</h3>
+        <p class="product-meta">128GB · OLED · Dual Camera</p>
+        <p class="product-price">$699</p>
+        <button class="btn primary require-auth">Add to Cart</button>
+        <p class="auth-hint"></p>
+      </article>
+
+      <article class="card product-card">
+        <h3>BlinkSound Wireless Earbuds</h3>
+        <p class="product-meta">Noise cancelling · 24h battery</p>
+        <p class="product-price">$129</p>
+        <button class="btn primary require-auth">Add to Cart</button>
+        <p class="auth-hint"></p>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> BlinkHub-Devicess · Part of BlinkHubMall.</p>
+  </footer>
+
+  <!-- Auth modal (shared layout) -->
+  <div id="authModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="closeAuthModal">×</button>
+      <h2 id="authTitle">Login to BlinkHub-Devicess</h2>
+
+      <form id="authForm">
+        <label>
+          Email
+          <input type="email" id="authEmail" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="authPassword" minlength="6" required />
+        </label>
+
+        <button type="submit" class="btn primary" id="authSubmitBtn">Login</button>
+        <p class="form-toggle">
+          <span id="toggleAuthMode">Need an account? <button type="button" class="linklike">Sign up</button></span>
+        </p>
+        <p id="authError" class="form-error"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

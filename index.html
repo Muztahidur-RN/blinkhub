@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BlinkHubMall – Your Digital Service Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase (compat, easiest for beginners) -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+</head>
+<body data-page="mall">
+  <!-- Top bar / nav -->
+  <header class="nav">
+    <div class="nav-left">
+      <img src="assets/logo-bh-icon.png" alt="BlinkHubMall Logo" class="logo-icon" />
+      <div class="logo-text-group">
+        <img src="assets/logo-blinkhub-text.png" alt="BlinkHubMall" class="logo-text" />
+        <span class="tagline">One hub for every blink of your online life.</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="devices.html">BlinkHub-Devicess</a>
+    </nav>
+    <div class="nav-auth">
+      <span id="userStatus"></span>
+      <button id="loginBtn" class="btn ghost">Login</button>
+      <button id="logoutBtn" class="btn danger hidden">Logout</button>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to <span class="accent">BlinkHubMall</span></h1>
+      <p>
+        Your central platform to explore services, shops, and digital experiences —  
+        all connected under one powerful account.
+      </p>
+      <div class="hero-actions">
+        <button id="ctaCreateAccount" class="btn primary">Create Account</button>
+        <a href="devices.html" class="btn secondary">Visit BlinkHub-Devicess</a>
+      </div>
+      <p class="hero-note">
+        You can browse BlinkHubMall without an account, but
+        <strong>services are only available after login.</strong>
+      </p>
+    </div>
+    <div class="hero-graphic">
+      <div class="hero-card">
+        <h2>Connected. Simple. Smart.</h2>
+        <p>
+          One account to access shopping, services, and future BlinkHub platforms.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services (some require login) -->
+  <section id="services" class="section">
+    <h2 class="section-title">BlinkHubMall Services</h2>
+    <p class="section-subtitle">
+      Explore what BlinkHubMall can do. Content is visible to all, but actions require login.
+    </p>
+
+    <div class="cards-grid">
+      <!-- Public info, login required for action -->
+      <article class="card" data-requires-auth="true">
+        <h3>Account Dashboard</h3>
+        <p>Manage your BlinkHub profile, connect future apps, and control your preferences.</p>
+        <button class="btn primary service-action">Open Dashboard</button>
+        <p class="auth-hint"></p>
+      </article>
+
+      <article class="card" data-requires-auth="true">
+        <h3>Smart Subscriptions</h3>
+        <p>Subscribe to tools and services inside BlinkHubMall with a single account.</p>
+        <button class="btn primary service-action">Manage Subscriptions</button>
+        <p class="auth-hint"></p>
+      </article>
+
+      <article class="card">
+        <h3>Discover BlinkHub-Devicess</h3>
+        <p>Browse laptops, phones, and electronic devices curated specially for you.</p>
+        <a href="devices.html" class="btn secondary">Go to Store</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© <span id="year"></span> BlinkHubMall · Built with ❤️ by your family team.</p>
+  </footer>
+
+  <!-- Auth modal -->
+  <div id="authModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="closeAuthModal">×</button>
+      <h2 id="authTitle">Login to BlinkHubMall</h2>
+
+      <form id="authForm">
+        <label>
+          Email
+          <input type="email" id="authEmail" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="authPassword" minlength="6" required />
+        </label>
+
+        <button type="submit" class="btn primary" id="authSubmitBtn">Login</button>
+        <p class="form-toggle">
+          <span id="toggleAuthMode">Need an account? <button type="button" class="linklike">Sign up</button></span>
+        </p>
+        <p id="authError" class="form-error"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
